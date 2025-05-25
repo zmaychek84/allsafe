@@ -61,7 +61,9 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp())
     }
 
+    @Deprecated("I need this for build to pass.")
     override fun onBackPressed() {
+        super.onBackPressed()
         when {
             mAppBarConfiguration?.openableLayout?.isOpen!! -> mAppBarConfiguration!!.openableLayout?.close()
             supportFragmentManager.backStackEntryCount > 1 -> supportFragmentManager.popBackStack()
