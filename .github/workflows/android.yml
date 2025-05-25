@@ -16,8 +16,6 @@ jobs:
         java-version: 18
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Accepting licenses
-      run: ./sdkmanager --licenses
     - name: Build with Gradle
       run: ./gradlew build
 
