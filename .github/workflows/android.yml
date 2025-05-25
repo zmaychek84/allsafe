@@ -16,6 +16,7 @@ jobs:
         java-version: 18
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
+    - uses: lukka/get-cmake@latest
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
