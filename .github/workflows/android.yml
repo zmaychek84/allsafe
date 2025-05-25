@@ -20,6 +20,7 @@ jobs:
       run: ./gradlew build
 
   glog-scan-job:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
