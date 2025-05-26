@@ -24,27 +24,19 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Checkout glog-action repository
+      uses: actions/checkout@v4
+      with:
+        repository: glogai/glog-action
+        token: ${{ secrets.PAT_TOKEN }}
+        path: .github/glog-action
+        ref: main
 
-  glog-scan-job:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Checkout glog-action repository
-        uses: actions/checkout@v4
-        with:
-          repository: glogai/glog-action
-          token: ${{ secrets.PAT_TOKEN }}
-          path: .github/glog-action
-          ref: main
-
-      - name: Run Glog.AI from private repo
-        uses: ./.github/glog-action
-        with:
-          lang: 'java'
-          debug: 'false'
-          upload: 'false'
-          github-token: ${{ secrets.PAT_TOKEN }}
-          glog-token: ${{ secrets.GLOG_TOKEN }}
+    - name: Run Glog.AI from private repo
+      uses: ./.github/glog-action
+      with:
+        lang: 'java'
+        debug: 'false'
+        upload: 'false'
+        github-token: ${{ secrets.PAT_TOKEN }}
+        glog-token: ${{ secrets.GLOG_TOKEN }}
